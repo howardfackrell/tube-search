@@ -24,6 +24,7 @@ var getRequest = function(searchTerm) {
 
 var showResults = function(results) {
   var displayArea = $('#search-results');
+  displayArea.empty();
   $(results).each(function(index, value) {
     displayArea.append(formatSnippet(value));  
   });
@@ -33,7 +34,9 @@ var showResults = function(results) {
 var formatSnippet = function(vid) {
   var h = "";
   h+="<li><div>";
+  h+="<a target='_blank' href='https://www.youtube.com/watch?v="+ vid.id.videoId + "'>"
   h+="<img src='" +vid.snippet.thumbnails.medium.url +"'/>";
+  h+="</a>";
   h+="<h3>"+vid.snippet.title+"</h3>";
   h+="<p>"+vid.snippet.description+"</p>";
   h+="</div></li>";
